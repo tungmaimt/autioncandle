@@ -12,6 +12,6 @@ const userSchema = new mongoose.Schema({
   start_user: mongoose.Schema.Types.ObjectId,
 })
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('Aution', userSchema)
 
 export default User
