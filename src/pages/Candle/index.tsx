@@ -1,9 +1,10 @@
-function Aution() {
-  return (
-    <>
-      <p className='color-primary'>candle</p>
-    </>
-  )
+import ChartCandle from '../../components/ChartCandle/ChartCandle'
+
+function Candle() {
+  return (<>
+    <h2>Candle Chart</h2>
+    <ChartCandle />
+  </>)
 }
 
-export default Aution
+export default Candle

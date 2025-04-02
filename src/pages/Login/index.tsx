@@ -1,9 +1,7 @@
-function Aution() {
-  return (
-    <>
-      <div className='color-primary'>login</div>
-    </>
-  )
+function Login() {
+  return (<>
+    <h2>Login</h2>
+  </>)
 }
 
-export default Aution
+export default Login

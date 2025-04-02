@@ -1,9 +1,7 @@
 function Aution() {
-  return (
-    <>
-      <p className='color-primary'>aution</p>
-    </>
-  )
+  return (<>
+    <h2>Aution</h2>
+  </>)
 }
 
 export default Aution

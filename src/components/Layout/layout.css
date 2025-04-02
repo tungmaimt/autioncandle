@@ -1,0 +1,14 @@
+.nav {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  position: sticky;
+  background-color: wheat;
+  opacity: 1;
+  z-index: 1;
+  top: 0;
+}
+
+.nav a {
+  color: blueviolet;
+}
