@@ -2,7 +2,11 @@ import express from 'express'
 import jwt from 'jsonwebtoken'
 import { createHash } from 'crypto'
 
+import { config } from 'dotenv'
+
 import User from '../models/user.js'
+
+config()
 
 const router = express.Router()
 const jwt_key = process.env.JWT_KEY
@@ -29,7 +33,7 @@ router.post('/login', async (req, res) => {
 
   const user = await User.findOne({
     email,
-    password: hashPassword(password)
+    password: hashPassword(password),
   })
 
   if (!user) {

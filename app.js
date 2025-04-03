@@ -19,6 +19,12 @@ const app = express()
 
 app.use(express.json({verify: (req, res, buf) => { req.rawBody = buf }}))
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, token");
+  next();
+});
+
 app.use(userRouter)
 app.use(autionRouter)
 

@@ -1,7 +1,11 @@
 import express from 'express'
+import { config } from 'dotenv'
+import jwt from 'jsonwebtoken'
 
 import Aution from '../models/aution.js'
 import User from '../models/user.js'
+
+config()
 
 const router = express.Router()
 
@@ -18,6 +22,7 @@ const decodeToken = (token) => {
 
 const getUser = async (req) => {
   const token = req.get('token')
+
   if (!token) {
     return null
   }
@@ -33,7 +38,7 @@ const getUser = async (req) => {
 
 const hideEmail = (email) => {
   const [firstPart, secondPart] = email.split('@')
-  return `${firstPart.slice(0, 3)}@${secondPart}`
+  return `${firstPart.slice(0, 3)}***@${secondPart}`
 }
 
 router.get('/aution', async (req, res) => {
@@ -49,8 +54,6 @@ router.get('/aution', async (req, res) => {
     status: 200,
     data: !activeAution ? null : activeAution.toJSON(),
   })
-
-  res.send({ status: 'ok' })
 })
 
 router.post('/aution', async (req, res) => {
@@ -59,7 +62,7 @@ router.post('/aution', async (req, res) => {
 
   const now = new Date()
 
-  const user = getUser(req)
+  const user = await getUser(req)
 
   if (!user) {
     return res.status(401).json({
@@ -89,7 +92,7 @@ router.post('/aution', async (req, res) => {
 
   const update = await Aution.updateOne(
     {
-      id: activeAution.id,
+      _id: activeAution.id,
       current_price: { $lte: amount - activeAution.price_step },
     },
     {

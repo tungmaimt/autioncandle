@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# Candlestick Chart + Aution app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+2 app in 1 project
+- Candlestick Chart frontend with React
+- Aution api backing with nodejs
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Candlestick Chart
 
-## Expanding the ESLint configuration
+Stack: React + Typescript + Vite
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Using binance websocket to get data from ticker price and klines data every 10s.
+- BNB/USDT and ETH/USDT is the symbol to get data
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### How to run
+
+Add `.env` file and update its content with VITE_API_URL variable, which is your backend api url.
+
+.env
+```
+VITE_API_URL=http://localhost:3000
+```
+run dev
+
+```
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Aution app
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Stack: Nodejs - Express + Mongodb
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- Simple login/register api with email and password.
+- Aution api with get and submit aution.
+
+### How to run
+
+Add `.env` file and update its content with MONGO_STRING and JWT_KEY variable (view .env.exemple).
+
+.env
+```
+MONGO_STRING=mongodb://username:password@mongo.url:port/batabase
+JWT_KEY=somekey
+```
+
+run app
+
+```
+node app.js
 ```
