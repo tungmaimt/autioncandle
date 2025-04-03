@@ -26,6 +26,8 @@ run dev
 npm run dev
 ```
 
+Fontend at: [localhost:5173](http://localhost:5173)
+
 ## Aution app
 
 Stack: Nodejs - Express + Mongodb
@@ -48,3 +50,5 @@ run app
 ```
 node app.js
 ```
+
+Backend at: [localhost:3000](http://localhost:3000)
